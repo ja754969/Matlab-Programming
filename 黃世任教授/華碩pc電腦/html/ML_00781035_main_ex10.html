@@ -1,0 +1,584 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>ML_00781035_main_ex10</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-06-08"><meta name="DC.source" content="ML_00781035_main_ex10.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="comment">%&#26366;&#37434;&#30355;_0071035_Matlab&#31777;&#20171;_&#20316;&#26989;10</span>
+clear;clc;clf;
+ex=xlsread(<span class="string">'ML_1072_Ex_10_dat.xlsx'</span>);
+<span class="comment">%&#25226;Excel&#30340;&#27284;&#26696;&#35712;&#36914;&#20358;</span>
+[data1,text,all_data]=xlsread(<span class="string">'ML_1072_Ex_10_dat.xlsx'</span>);
+<span class="comment">% sheet=1;</span>
+<span class="comment">% x1Range='A2:H169'; %&#25351;&#23450;&#35201;&#35712;&#21738;&#19968;&#20491;&#21312;&#22495;&#30340;&#36039;&#26009;</span>
+<span class="comment">% D=xlsread('ML_CH17_Excel.xlsx',sheet,x1Range);</span>
+<span class="comment">% [day ot sp t td ws wd pre]=xlsread('ML_1072_Ex_10_dat.xlsx')</span>
+<span class="comment">%(a)</span>
+day=data1(:,1);<span class="comment">%day&#24180;&#26376;&#26085;&#12289;</span>
+ot=data1(:,2);<span class="comment">%ot&#35264;&#28204;&#26178;&#38291;&#12289;</span>
+sp=data1(:,3);<span class="comment">%sp&#28023;&#24179;&#38754;&#27683;&#22739;&#12289;</span>
+t=data1(:,4);<span class="comment">%t&#27683;&#28331;&#12289;</span>
+td=data1(:,5);<span class="comment">%td&#38706;&#40670;&#28331;&#24230;&#12289;</span>
+ws=data1(:,6);<span class="comment">%ws&#39080;&#36895;&#12289;</span>
+wd=data1(:,7);<span class="comment">%wd&#39080;&#21521;&#12289;</span>
+pre=data1(:,8);<span class="comment">%pre&#38477;&#38632;&#37327;</span>
+rh=ML_00781035_func_ex10_RH(t,td); <span class="comment">% rh &#30456;&#23565;&#28348;&#24230;</span>
+<span class="keyword">for</span> i=1:7
+   D(i,:)=day(24*(i-1)+1);
+<span class="keyword">end</span>
+D;
+<span class="keyword">for</span> i=1:length(day)
+fprintf(<span class="string">'day:%8d time:%2d temp=%4.2f&deg;C temp_d=%4.2f&deg;C  RH=%4.2f%%\n'</span>,<span class="keyword">...</span>
+    day(i),ot(i),t(i),td(i),rh(i))
+<span class="keyword">end</span>
+<span class="comment">%(b)</span>
+day=data1(:,1);<span class="comment">%day&#24180;&#26376;&#26085;</span>
+day51=day(1:24);
+day52=day(25:48);
+day53=day(49:72);
+day54=day(73:96);
+day55=day(97:120);
+day56=day(121:144);
+day57=day(145:168);
+sp51=sp(1:24);
+[sp51_hx,sp51_hx2]=ML_00781035_func_ex10(sp51)
+sp52=sp(25:48);
+[sp52_hx,sp52_hx2]=ML_00781035_func_ex10(sp52);
+sp53=sp(49:72);
+[sp53_hx,sp53_hx2]=ML_00781035_func_ex10(sp53);
+sp54=sp(73:96);
+[sp54_hx,sp54_hx2]=ML_00781035_func_ex10(sp54);
+sp55=sp(97:120);
+[sp55_hx,sp55_hx2]=ML_00781035_func_ex10(sp55);
+sp56=sp(121:144);
+[sp56_hx,sp56_hx2]=ML_00781035_func_ex10(sp56);
+sp57=sp(145:168);
+[sp57_hx,sp57_hx2]=ML_00781035_func_ex10(sp57);
+
+t51=t(1:24);
+[t51_hx,t51_hx2]=ML_00781035_func_ex10(t51);
+t52=t(25:48);
+[t52_hx,t52_hx2]=ML_00781035_func_ex10(t52);
+t53=t(49:72);
+[t53_hx,t53_hx2]=ML_00781035_func_ex10(t53);
+t54=t(73:96);
+[t54_hx,t54_hx2]=ML_00781035_func_ex10(t54);
+t55=t(97:120);
+[t55_hx,t55_hx2]=ML_00781035_func_ex10(t55);
+t56=t(121:144);
+[t56_hx,t56_hx2]=ML_00781035_func_ex10(t56);
+t57=t(145:168);
+[t57_hx,t57_hx2]=ML_00781035_func_ex10(t57);
+td51=td(1:24);
+[td51_hx,td51_hx2]=ML_00781035_func_ex10(td51);
+td52=td(25:48);
+[td52_hx,td52_hx2]=ML_00781035_func_ex10(td52);
+td53=td(49:72);
+[td53_hx,td53_hx2]=ML_00781035_func_ex10(td53);
+td54=td(73:96);
+[td54_hx,td54_hx2]=ML_00781035_func_ex10(td54);
+td55=td(97:120);
+[td55_hx,td55_hx2]=ML_00781035_func_ex10(td55);
+td56=td(121:144);
+[td56_hx,td56_hx2]=ML_00781035_func_ex10(td56);
+td57=td(145:168);
+[td57_hx,td57_hx2]=ML_00781035_func_ex10(td57);
+ws51=ws(1:24);
+[ws51_hx,ws51_hx2]=ML_00781035_func_ex10(ws51);
+ws52=ws(25:48);
+[ws52_hx,ws52_hx2]=ML_00781035_func_ex10(ws52);
+ws53=ws(49:72);
+[ws53_hx,ws53_hx2]=ML_00781035_func_ex10(ws53);
+ws54=ws(73:96);
+[ws54_hx,ws54_hx2]=ML_00781035_func_ex10(ws54);
+ws55=ws(97:120);
+[ws55_hx,ws55_hx2]=ML_00781035_func_ex10(ws55);
+ws56=ws(121:144);
+[ws56_hx,ws56_hx2]=ML_00781035_func_ex10(ws56);
+ws57=ws(145:168);
+[ws57_hx,ws57_hx2]=ML_00781035_func_ex10(ws57);
+<span class="comment">%(c)</span>
+pre51=pre(1:24);
+pre201951=nansum(pre51)
+pre52=pre(25:48);
+pre201952=nansum(pre52)
+pre53=pre(49:72);
+pre201953=nansum(pre53)
+pre54=pre(73:96);
+pre201954=nansum(pre54)
+pre55=pre(97:120);
+pre201955=nansum(pre55)
+pre56=pre(121:144);
+pre201956=nansum(pre56)
+pre57=pre(145:168);
+pre201957=nansum(pre57)
+<span class="comment">%(d)</span>
+a=cat(2,day,ot,t,td,rh);
+b1=cat(1,D(1),D(2),D(3),D(4),D(5),D(6),D(7));
+b2=cat(1,sp51_hx,sp52_hx,sp53_hx,sp54_hx,sp55_hx,sp56_hx,sp57_hx);
+b3=cat(1,t51_hx,t52_hx,t53_hx,t54_hx,t55_hx,t56_hx,t57_hx);
+b4=cat(1,td51_hx,td52_hx,td53_hx,td54_hx,td55_hx,td56_hx,td57_hx);
+b=cat(2,b1,b2,b3,b4);
+c1=cat(1,pre201951,pre201952,pre201953,pre201954,pre201955,pre201956,pre201957);
+c=cat(2,b1,c1);
+xlswrite(<span class="string">'ML_1072_Ex_10_dat.xlsx'</span>, a, <span class="string">'A'</span>) <span class="comment">%a&#25918;&#21040;&#24037;&#20316;&#34920;A</span>
+xlswrite(<span class="string">'ML_1072_Ex_10_dat.xlsx'</span>, b, <span class="string">'B'</span>) <span class="comment">%b&#25918;&#21040;&#24037;&#20316;&#34920;B</span>
+xlswrite(<span class="string">'ML_1072_Ex_10_dat.xlsx'</span>, c, <span class="string">'C'</span>) <span class="comment">%c&#25918;&#21040;&#24037;&#20316;&#34920;C</span>
+<span class="comment">%(e)</span>
+day_all=[501:507];
+sp_hx_day=[sp51_hx sp52_hx sp53_hx sp54_hx sp55_hx sp56_hx sp57_hx];
+t_hx_day=[t51_hx t52_hx t53_hx t54_hx t55_hx t56_hx t57_hx];
+subplot(2,1,1)
+plotyy(day_all,sp_hx_day,day_all,t_hx_day); <span class="comment">%&#24038;&#37002;y1&#65292;&#21491;&#37002;y2&#65292;&#30059;&#20986;&#38617;y&#36600;&#22294;</span>
+xlabel(<span class="string">'date(2019&#20116;&#26376;1&#34399;&#21040;7&#34399;)'</span>);ylabel(<span class="string">'&#35519;&#21644;&#24179;&#22343;&#27683;&#22739;(hPa)'</span>);
+title(<span class="string">'2019&#20116;&#26376;&#27599;&#26085;&#35519;&#21644;&#24179;&#22343;&#27683;&#22739;&#33287;&#27683;&#28331;&#38568;&#26085;&#26399;&#30340;&#35722;&#21270;&#22294;'</span>);
+yyaxis <span class="string">right</span> <span class="comment">%</span>
+axis([-inf,inf,18,25])
+ylabel(<span class="string">'&#35519;&#21644;&#24179;&#22343;&#27683;&#28331;(temp^oC)'</span>);
+<span class="comment">%(f)</span>
+subplot(2,1,2)
+hist(wd,16) <span class="comment">%&#30452;&#26041;&#22294;</span>
+xlabel(<span class="string">'&#39080;&#21521;(&#24230;)'</span>);ylabel(<span class="string">'&#32676;&#32068;&#20491;&#25976;'</span>);
+axis([0,360,-inf,inf])
+title(<span class="string">'&#25152;&#26377;&#35264;&#28204;&#36039;&#26009;&#30340;&#39080;&#21521;&#30452;&#26041;&#22294;(&#20998;&#28858;16&#26041;&#20301;)'</span>);
+</pre><pre class="codeoutput">day:20190501 time: 1 temp=23.90&deg;C temp_d=21.80&deg;C  RH=88.04%
+day:20190501 time: 2 temp=23.60&deg;C temp_d=21.90&deg;C  RH=90.20%
+day:20190501 time: 3 temp=23.70&deg;C temp_d=22.50&deg;C  RH=92.99%
+day:20190501 time: 4 temp=23.20&deg;C temp_d=21.90&deg;C  RH=92.40%
+day:20190501 time: 5 temp=22.80&deg;C temp_d=21.50&deg;C  RH=92.38%
+day:20190501 time: 6 temp=21.20&deg;C temp_d=19.90&deg;C  RH=92.29%
+day:20190501 time: 7 temp=20.10&deg;C temp_d=18.80&deg;C  RH=92.23%
+day:20190501 time: 8 temp=19.50&deg;C temp_d=17.90&deg;C  RH=90.47%
+day:20190501 time: 9 temp=19.80&deg;C temp_d=18.30&deg;C  RH=91.06%
+day:20190501 time:10 temp=19.30&deg;C temp_d=17.70&deg;C  RH=90.46%
+day:20190501 time:11 temp=19.40&deg;C temp_d=18.00&deg;C  RH=91.61%
+day:20190501 time:12 temp=19.50&deg;C temp_d=17.50&deg;C  RH=88.22%
+day:20190501 time:13 temp=19.80&deg;C temp_d=18.20&deg;C  RH=90.49%
+day:20190501 time:14 temp=20.10&deg;C temp_d=17.90&deg;C  RH=87.16%
+day:20190501 time:15 temp=20.80&deg;C temp_d=17.40&deg;C  RH=80.88%
+day:20190501 time:16 temp=20.90&deg;C temp_d=16.70&deg;C  RH=76.90%
+day:20190501 time:17 temp=21.20&deg;C temp_d=17.20&deg;C  RH=77.93%
+day:20190501 time:18 temp=21.40&deg;C temp_d=16.70&deg;C  RH=74.57%
+day:20190501 time:19 temp=21.60&deg;C temp_d=17.70&deg;C  RH=78.48%
+day:20190501 time:20 temp=21.60&deg;C temp_d=16.50&deg;C  RH=72.73%
+day:20190501 time:21 temp=21.30&deg;C temp_d=16.10&deg;C  RH=72.22%
+day:20190501 time:22 temp=21.30&deg;C temp_d=15.70&deg;C  RH=70.39%
+day:20190501 time:23 temp=21.60&deg;C temp_d=16.10&deg;C  RH=70.90%
+day:20190501 time:24 temp=20.60&deg;C temp_d=16.30&deg;C  RH=76.36%
+day:20190502 time: 1 temp=20.10&deg;C temp_d=16.50&deg;C  RH=79.77%
+day:20190502 time: 2 temp=20.30&deg;C temp_d=16.80&deg;C  RH=80.31%
+day:20190502 time: 3 temp=20.30&deg;C temp_d=17.20&deg;C  RH=82.37%
+day:20190502 time: 4 temp=22.20&deg;C temp_d=16.10&deg;C  RH=68.35%
+day:20190502 time: 5 temp=22.50&deg;C temp_d=15.40&deg;C  RH=64.17%
+day:20190502 time: 6 temp=22.70&deg;C temp_d=15.80&deg;C  RH=65.04%
+day:20190502 time: 7 temp=22.90&deg;C temp_d=15.50&deg;C  RH=63.04%
+day:20190502 time: 8 temp=21.30&deg;C temp_d=15.60&deg;C  RH=69.95%
+day:20190502 time: 9 temp=20.50&deg;C temp_d=15.80&deg;C  RH=74.42%
+day:20190502 time:10 temp=19.50&deg;C temp_d=16.60&deg;C  RH=83.33%
+day:20190502 time:11 temp=20.00&deg;C temp_d=15.40&deg;C  RH=74.82%
+day:20190502 time:12 temp=20.30&deg;C temp_d=15.20&deg;C  RH=72.50%
+day:20190502 time:13 temp=20.10&deg;C temp_d=16.30&deg;C  RH=78.76%
+day:20190502 time:14 temp=19.90&deg;C temp_d=16.70&deg;C  RH=81.80%
+day:20190502 time:15 temp=19.90&deg;C temp_d=16.90&deg;C  RH=82.85%
+day:20190502 time:16 temp=19.90&deg;C temp_d=16.60&deg;C  RH=81.28%
+day:20190502 time:17 temp=19.70&deg;C temp_d=16.70&deg;C  RH=82.82%
+day:20190502 time:18 temp=19.50&deg;C temp_d=16.30&deg;C  RH=81.75%
+day:20190502 time:19 temp=19.20&deg;C temp_d=16.20&deg;C  RH=82.76%
+day:20190502 time:20 temp=19.00&deg;C temp_d=16.10&deg;C  RH=83.27%
+day:20190502 time:21 temp=18.80&deg;C temp_d=15.80&deg;C  RH=82.71%
+day:20190502 time:22 temp=19.00&deg;C temp_d=16.70&deg;C  RH=86.51%
+day:20190502 time:23 temp=18.80&deg;C temp_d=16.80&deg;C  RH=88.16%
+day:20190502 time:24 temp=19.10&deg;C temp_d=16.40&deg;C  RH=84.35%
+day:20190503 time: 1 temp=18.90&deg;C temp_d=17.90&deg;C  RH=93.92%
+day:20190503 time: 2 temp=18.80&deg;C temp_d=17.00&deg;C  RH=89.28%
+day:20190503 time: 3 temp=18.90&deg;C temp_d=17.10&deg;C  RH=89.29%
+day:20190503 time: 4 temp=18.80&deg;C temp_d=17.30&deg;C  RH=91.00%
+day:20190503 time: 5 temp=18.80&deg;C temp_d=17.00&deg;C  RH=89.28%
+day:20190503 time: 6 temp=19.00&deg;C temp_d=17.80&deg;C  RH=92.75%
+day:20190503 time: 7 temp=20.70&deg;C temp_d=15.40&deg;C  RH=71.65%
+day:20190503 time: 8 temp=21.00&deg;C temp_d=16.20&deg;C  RH=74.03%
+day:20190503 time: 9 temp=21.30&deg;C temp_d=15.10&deg;C  RH=67.74%
+day:20190503 time:10 temp=21.90&deg;C temp_d=14.80&deg;C  RH=64.04%
+day:20190503 time:11 temp=22.70&deg;C temp_d=15.50&deg;C  RH=63.81%
+day:20190503 time:12 temp=23.50&deg;C temp_d=14.20&deg;C  RH=55.90%
+day:20190503 time:13 temp=23.80&deg;C temp_d=14.70&deg;C  RH=56.70%
+day:20190503 time:14 temp=23.70&deg;C temp_d=14.60&deg;C  RH=56.68%
+day:20190503 time:15 temp=23.50&deg;C temp_d=14.00&deg;C  RH=55.18%
+day:20190503 time:16 temp=23.60&deg;C temp_d=13.60&deg;C  RH=53.44%
+day:20190503 time:17 temp=23.60&deg;C temp_d=14.20&deg;C  RH=55.57%
+day:20190503 time:18 temp=23.10&deg;C temp_d=12.80&deg;C  RH=52.28%
+day:20190503 time:19 temp=22.60&deg;C temp_d=12.30&deg;C  RH=52.15%
+day:20190503 time:20 temp=22.30&deg;C temp_d=13.40&deg;C  RH=57.08%
+day:20190503 time:21 temp=21.80&deg;C temp_d=14.20&deg;C  RH=61.98%
+day:20190503 time:22 temp=20.60&deg;C temp_d=15.10&deg;C  RH=70.72%
+day:20190503 time:23 temp=20.40&deg;C temp_d=16.40&deg;C  RH=77.81%
+day:20190503 time:24 temp=20.80&deg;C temp_d=15.60&deg;C  RH=72.13%
+day:20190504 time: 1 temp=21.30&deg;C temp_d=16.70&deg;C  RH=75.03%
+day:20190504 time: 2 temp=21.40&deg;C temp_d=16.90&deg;C  RH=75.53%
+day:20190504 time: 3 temp=21.50&deg;C temp_d=17.70&deg;C  RH=78.96%
+day:20190504 time: 4 temp=22.10&deg;C temp_d=17.10&deg;C  RH=73.28%
+day:20190504 time: 5 temp=22.10&deg;C temp_d=18.40&deg;C  RH=79.54%
+day:20190504 time: 6 temp=22.40&deg;C temp_d=16.40&deg;C  RH=68.83%
+day:20190504 time: 7 temp=22.30&deg;C temp_d=17.70&deg;C  RH=75.20%
+day:20190504 time: 8 temp=22.40&deg;C temp_d=17.20&deg;C  RH=72.41%
+day:20190504 time: 9 temp=22.40&deg;C temp_d=17.90&deg;C  RH=75.69%
+day:20190504 time:10 temp=23.30&deg;C temp_d=16.00&deg;C  RH=63.53%
+day:20190504 time:11 temp=23.50&deg;C temp_d=17.40&deg;C  RH=68.61%
+day:20190504 time:12 temp=24.10&deg;C temp_d=16.50&deg;C  RH=62.50%
+day:20190504 time:13 temp=23.90&deg;C temp_d=15.90&deg;C  RH=60.88%
+day:20190504 time:14 temp=23.40&deg;C temp_d=17.80&deg;C  RH=70.79%
+day:20190504 time:15 temp=23.40&deg;C temp_d=16.30&deg;C  RH=64.37%
+day:20190504 time:16 temp=23.40&deg;C temp_d=16.50&deg;C  RH=65.19%
+day:20190504 time:17 temp=23.80&deg;C temp_d=16.40&deg;C  RH=63.23%
+day:20190504 time:18 temp=23.70&deg;C temp_d=15.60&deg;C  RH=60.45%
+day:20190504 time:19 temp=23.30&deg;C temp_d=16.50&deg;C  RH=65.59%
+day:20190504 time:20 temp=23.50&deg;C temp_d=17.20&deg;C  RH=67.74%
+day:20190504 time:21 temp=23.40&deg;C temp_d=17.00&deg;C  RH=67.30%
+day:20190504 time:22 temp=23.60&deg;C temp_d=17.20&deg;C  RH=67.34%
+day:20190504 time:23 temp=23.40&deg;C temp_d=17.00&deg;C  RH=67.30%
+day:20190504 time:24 temp=23.50&deg;C temp_d=16.70&deg;C  RH=65.63%
+day:20190505 time: 1 temp=23.40&deg;C temp_d=16.90&deg;C  RH=66.87%
+day:20190505 time: 2 temp=23.30&deg;C temp_d=17.40&deg;C  RH=69.44%
+day:20190505 time: 3 temp=22.90&deg;C temp_d=16.60&deg;C  RH=67.62%
+day:20190505 time: 4 temp=22.10&deg;C temp_d=17.50&deg;C  RH=75.16%
+day:20190505 time: 5 temp=22.00&deg;C temp_d=17.40&deg;C  RH=75.15%
+day:20190505 time: 6 temp=22.10&deg;C temp_d=17.20&deg;C  RH=73.75%
+day:20190505 time: 7 temp=23.50&deg;C temp_d=19.00&deg;C  RH=75.86%
+day:20190505 time: 8 temp=25.20&deg;C temp_d=17.60&deg;C  RH=62.74%
+day:20190505 time: 9 temp=26.30&deg;C temp_d=18.60&deg;C  RH=62.59%
+day:20190505 time:10 temp=25.90&deg;C temp_d=18.30&deg;C  RH=62.90%
+day:20190505 time:11 temp=26.20&deg;C temp_d=18.10&deg;C  RH=61.02%
+day:20190505 time:12 temp=26.90&deg;C temp_d=18.20&deg;C  RH=58.92%
+day:20190505 time:13 temp=26.30&deg;C temp_d=17.80&deg;C  RH=59.53%
+day:20190505 time:14 temp=26.30&deg;C temp_d=18.70&deg;C  RH=62.99%
+day:20190505 time:15 temp=26.40&deg;C temp_d=18.10&deg;C  RH=60.30%
+day:20190505 time:16 temp=26.00&deg;C temp_d=18.00&deg;C  RH=61.36%
+day:20190505 time:17 temp=25.40&deg;C temp_d=17.70&deg;C  RH=62.39%
+day:20190505 time:18 temp=25.10&deg;C temp_d=17.80&deg;C  RH=63.92%
+day:20190505 time:19 temp=24.90&deg;C temp_d=18.80&deg;C  RH=68.88%
+day:20190505 time:20 temp=24.70&deg;C temp_d=17.10&deg;C  RH=62.63%
+day:20190505 time:21 temp=24.40&deg;C temp_d=16.60&deg;C  RH=61.78%
+day:20190505 time:22 temp=24.50&deg;C temp_d=16.80&deg;C  RH=62.19%
+day:20190505 time:23 temp=23.40&deg;C temp_d=17.80&deg;C  RH=70.79%
+day:20190505 time:24 temp=22.70&deg;C temp_d=19.20&deg;C  RH=80.63%
+day:20190506 time: 1 temp=22.70&deg;C temp_d=18.90&deg;C  RH=79.13%
+day:20190506 time: 2 temp=22.60&deg;C temp_d=18.10&deg;C  RH=75.72%
+day:20190506 time: 3 temp=22.60&deg;C temp_d=17.70&deg;C  RH=73.84%
+day:20190506 time: 4 temp=22.30&deg;C temp_d=17.40&deg;C  RH=73.78%
+day:20190506 time: 5 temp=21.90&deg;C temp_d=18.10&deg;C  RH=79.02%
+day:20190506 time: 6 temp=21.40&deg;C temp_d=18.00&deg;C  RH=80.96%
+day:20190506 time: 7 temp=21.80&deg;C temp_d=19.30&deg;C  RH=85.70%
+day:20190506 time: 8 temp=22.00&deg;C temp_d=18.90&deg;C  RH=82.58%
+day:20190506 time: 9 temp=21.80&deg;C temp_d=18.80&deg;C  RH=83.07%
+day:20190506 time:10 temp=21.60&deg;C temp_d=19.20&deg;C  RH=86.22%
+day:20190506 time:11 temp=21.80&deg;C temp_d=20.40&deg;C  RH=91.76%
+day:20190506 time:12 temp=20.10&deg;C temp_d=18.40&deg;C  RH=89.95%
+day:20190506 time:13 temp=20.20&deg;C temp_d=17.70&deg;C  RH=85.54%
+day:20190506 time:14 temp=19.80&deg;C temp_d=18.00&deg;C  RH=89.36%
+day:20190506 time:15 temp=20.00&deg;C temp_d=19.30&deg;C  RH=95.74%
+day:20190506 time:16 temp=20.00&deg;C temp_d=19.20&deg;C  RH=95.15%
+day:20190506 time:17 temp=19.80&deg;C temp_d=18.50&deg;C  RH=92.21%
+day:20190506 time:18 temp=19.90&deg;C temp_d=18.30&deg;C  RH=90.50%
+day:20190506 time:19 temp=21.40&deg;C temp_d=18.00&deg;C  RH=80.96%
+day:20190506 time:20 temp=20.80&deg;C temp_d=16.80&deg;C  RH=77.87%
+day:20190506 time:21 temp=20.10&deg;C temp_d=18.30&deg;C  RH=89.38%
+day:20190506 time:22 temp=20.20&deg;C temp_d=17.30&deg;C  RH=83.41%
+day:20190506 time:23 temp=19.40&deg;C temp_d=18.80&deg;C  RH=96.33%
+day:20190506 time:24 temp=19.00&deg;C temp_d=16.80&deg;C  RH=87.06%
+day:20190507 time: 1 temp=19.70&deg;C temp_d=18.20&deg;C  RH=91.06%
+day:20190507 time: 2 temp=19.50&deg;C temp_d=18.20&deg;C  RH=92.19%
+day:20190507 time: 3 temp=18.30&deg;C temp_d=17.00&deg;C  RH=92.13%
+day:20190507 time: 4 temp=18.80&deg;C temp_d=16.10&deg;C  RH=84.32%
+day:20190507 time: 5 temp=18.40&deg;C temp_d=16.50&deg;C  RH=88.69%
+day:20190507 time: 6 temp=17.90&deg;C temp_d=15.90&deg;C  RH=88.08%
+day:20190507 time: 7 temp=17.70&deg;C temp_d=17.70&deg;C  RH=100.00%
+day:20190507 time: 8 temp=18.20&deg;C temp_d=16.90&deg;C  RH=92.12%
+day:20190507 time: 9 temp=17.90&deg;C temp_d=16.30&deg;C  RH=90.36%
+day:20190507 time:10 temp=18.40&deg;C temp_d=17.70&deg;C  RH=95.69%
+day:20190507 time:11 temp=18.40&deg;C temp_d=18.40&deg;C  RH=100.00%
+day:20190507 time:12 temp=18.20&deg;C temp_d=16.00&deg;C  RH=86.99%
+day:20190507 time:13 temp=20.00&deg;C temp_d=15.00&deg;C  RH=72.92%
+day:20190507 time:14 temp=19.10&deg;C temp_d=14.50&deg;C  RH=74.67%
+day:20190507 time:15 temp=19.50&deg;C temp_d=15.30&deg;C  RH=76.68%
+day:20190507 time:16 temp=19.90&deg;C temp_d=15.10&deg;C  RH=73.84%
+day:20190507 time:17 temp=19.60&deg;C temp_d=16.90&deg;C  RH=84.40%
+day:20190507 time:18 temp=20.00&deg;C temp_d=15.80&deg;C  RH=76.76%
+day:20190507 time:19 temp=20.10&deg;C temp_d=14.80&deg;C  RH=71.54%
+day:20190507 time:20 temp=20.60&deg;C temp_d=15.80&deg;C  RH=73.96%
+day:20190507 time:21 temp=20.90&deg;C temp_d=15.90&deg;C  RH=73.08%
+day:20190507 time:22 temp=19.00&deg;C temp_d=15.90&deg;C  RH=82.21%
+day:20190507 time:23 temp=19.20&deg;C temp_d=16.40&deg;C  RH=83.82%
+day:20190507 time:24 temp=19.50&deg;C temp_d=18.50&deg;C  RH=93.95%
+
+sp51_hx =
+
+   1.0104e+03
+
+
+sp51_hx2 =
+
+   1.0e-03 *
+
+    0.9935
+    0.9942
+    0.9947
+    0.9942
+    0.9941
+    0.9924
+    0.9906
+    0.9895
+    0.9889
+    0.9884
+    0.9881
+    0.9887
+    0.9889
+    0.9895
+    0.9899
+    0.9895
+    0.9891
+    0.9887
+    0.9880
+    0.9872
+    0.9864
+    0.9859
+    0.9861
+    0.9865
+
+
+pre201951 =
+
+   60.5000
+
+
+pre201952 =
+
+    12
+
+
+pre201953 =
+
+     2
+
+
+pre201954 =
+
+     0
+
+
+pre201955 =
+
+    0.2000
+
+
+pre201956 =
+
+   45.5000
+
+
+pre201957 =
+
+    33
+
+</pre><img vspace="5" hspace="5" src="ML_00781035_main_ex10_01.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%曾鈺皓_0071035_Matlab簡介_作業10
+clear;clc;clf;
+ex=xlsread('ML_1072_Ex_10_dat.xlsx');
+%把Excel的檔案讀進來
+[data1,text,all_data]=xlsread('ML_1072_Ex_10_dat.xlsx');
+% sheet=1;
+% x1Range='A2:H169'; %指定要讀哪一個區域的資料
+% D=xlsread('ML_CH17_Excel.xlsx',sheet,x1Range);
+% [day ot sp t td ws wd pre]=xlsread('ML_1072_Ex_10_dat.xlsx') 
+%(a)
+day=data1(:,1);%day年月日、
+ot=data1(:,2);%ot觀測時間、
+sp=data1(:,3);%sp海平面氣壓、
+t=data1(:,4);%t氣溫、
+td=data1(:,5);%td露點溫度、
+ws=data1(:,6);%ws風速、
+wd=data1(:,7);%wd風向、
+pre=data1(:,8);%pre降雨量
+rh=ML_00781035_func_ex10_RH(t,td); % rh 相對溼度
+for i=1:7
+   D(i,:)=day(24*(i-1)+1);
+end
+D;
+for i=1:length(day)
+fprintf('day:%8d time:%2d temp=%4.2f°C temp_d=%4.2f°C  RH=%4.2f%%\n',...
+    day(i),ot(i),t(i),td(i),rh(i))
+end
+%(b)
+day=data1(:,1);%day年月日
+day51=day(1:24);
+day52=day(25:48);
+day53=day(49:72);
+day54=day(73:96);
+day55=day(97:120);
+day56=day(121:144);
+day57=day(145:168);
+sp51=sp(1:24);
+[sp51_hx,sp51_hx2]=ML_00781035_func_ex10(sp51)
+sp52=sp(25:48);
+[sp52_hx,sp52_hx2]=ML_00781035_func_ex10(sp52);
+sp53=sp(49:72);
+[sp53_hx,sp53_hx2]=ML_00781035_func_ex10(sp53);
+sp54=sp(73:96);
+[sp54_hx,sp54_hx2]=ML_00781035_func_ex10(sp54);
+sp55=sp(97:120);
+[sp55_hx,sp55_hx2]=ML_00781035_func_ex10(sp55);
+sp56=sp(121:144);
+[sp56_hx,sp56_hx2]=ML_00781035_func_ex10(sp56);
+sp57=sp(145:168);
+[sp57_hx,sp57_hx2]=ML_00781035_func_ex10(sp57);
+
+t51=t(1:24);
+[t51_hx,t51_hx2]=ML_00781035_func_ex10(t51);
+t52=t(25:48);
+[t52_hx,t52_hx2]=ML_00781035_func_ex10(t52);
+t53=t(49:72);
+[t53_hx,t53_hx2]=ML_00781035_func_ex10(t53);
+t54=t(73:96);
+[t54_hx,t54_hx2]=ML_00781035_func_ex10(t54);
+t55=t(97:120);
+[t55_hx,t55_hx2]=ML_00781035_func_ex10(t55);
+t56=t(121:144);
+[t56_hx,t56_hx2]=ML_00781035_func_ex10(t56);
+t57=t(145:168);
+[t57_hx,t57_hx2]=ML_00781035_func_ex10(t57);
+td51=td(1:24);
+[td51_hx,td51_hx2]=ML_00781035_func_ex10(td51);
+td52=td(25:48);
+[td52_hx,td52_hx2]=ML_00781035_func_ex10(td52);
+td53=td(49:72);
+[td53_hx,td53_hx2]=ML_00781035_func_ex10(td53);
+td54=td(73:96);
+[td54_hx,td54_hx2]=ML_00781035_func_ex10(td54);
+td55=td(97:120);
+[td55_hx,td55_hx2]=ML_00781035_func_ex10(td55);
+td56=td(121:144);
+[td56_hx,td56_hx2]=ML_00781035_func_ex10(td56);
+td57=td(145:168);
+[td57_hx,td57_hx2]=ML_00781035_func_ex10(td57);
+ws51=ws(1:24);
+[ws51_hx,ws51_hx2]=ML_00781035_func_ex10(ws51);
+ws52=ws(25:48);
+[ws52_hx,ws52_hx2]=ML_00781035_func_ex10(ws52);
+ws53=ws(49:72);
+[ws53_hx,ws53_hx2]=ML_00781035_func_ex10(ws53);
+ws54=ws(73:96);
+[ws54_hx,ws54_hx2]=ML_00781035_func_ex10(ws54);
+ws55=ws(97:120);
+[ws55_hx,ws55_hx2]=ML_00781035_func_ex10(ws55);
+ws56=ws(121:144);
+[ws56_hx,ws56_hx2]=ML_00781035_func_ex10(ws56);
+ws57=ws(145:168);
+[ws57_hx,ws57_hx2]=ML_00781035_func_ex10(ws57);
+%(c)
+pre51=pre(1:24);
+pre201951=nansum(pre51)
+pre52=pre(25:48);
+pre201952=nansum(pre52)
+pre53=pre(49:72);
+pre201953=nansum(pre53)
+pre54=pre(73:96);
+pre201954=nansum(pre54)
+pre55=pre(97:120);
+pre201955=nansum(pre55)
+pre56=pre(121:144);
+pre201956=nansum(pre56)
+pre57=pre(145:168);
+pre201957=nansum(pre57)
+%(d)
+a=cat(2,day,ot,t,td,rh);
+b1=cat(1,D(1),D(2),D(3),D(4),D(5),D(6),D(7));
+b2=cat(1,sp51_hx,sp52_hx,sp53_hx,sp54_hx,sp55_hx,sp56_hx,sp57_hx);
+b3=cat(1,t51_hx,t52_hx,t53_hx,t54_hx,t55_hx,t56_hx,t57_hx);
+b4=cat(1,td51_hx,td52_hx,td53_hx,td54_hx,td55_hx,td56_hx,td57_hx);
+b=cat(2,b1,b2,b3,b4);
+c1=cat(1,pre201951,pre201952,pre201953,pre201954,pre201955,pre201956,pre201957);
+c=cat(2,b1,c1);
+xlswrite('ML_1072_Ex_10_dat.xlsx', a, 'A') %a放到工作表A
+xlswrite('ML_1072_Ex_10_dat.xlsx', b, 'B') %b放到工作表B
+xlswrite('ML_1072_Ex_10_dat.xlsx', c, 'C') %c放到工作表C
+%(e)
+day_all=[501:507];
+sp_hx_day=[sp51_hx sp52_hx sp53_hx sp54_hx sp55_hx sp56_hx sp57_hx];
+t_hx_day=[t51_hx t52_hx t53_hx t54_hx t55_hx t56_hx t57_hx];
+subplot(2,1,1)
+plotyy(day_all,sp_hx_day,day_all,t_hx_day); %左邊y1，右邊y2，畫出雙y軸圖
+xlabel('date(2019五月1號到7號)');ylabel('調和平均氣壓(hPa)');
+title('2019五月每日調和平均氣壓與氣溫隨日期的變化圖');
+yyaxis right %
+axis([-inf,inf,18,25])
+ylabel('調和平均氣溫(temp^oC)');
+%(f)
+subplot(2,1,2)
+hist(wd,16) %直方圖
+xlabel('風向(度)');ylabel('群組個數');
+axis([0,360,-inf,inf])
+title('所有觀測資料的風向直方圖(分為16方位)');
+##### SOURCE END #####
+--></body></html>

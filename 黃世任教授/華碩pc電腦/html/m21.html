@@ -1,0 +1,248 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>m21</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-03-09"><meta name="DC.source" content="m21.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput">v1 = [1 2 3]
+v2 = [2 4 6 8]
+v3 = [11;12;13]
+v4 = [1 2 3;11 12 13]
+v5 = [1:10]
+v6 = [1:2:10]
+v7 = [10:-1:1]
+v8 = <span class="string">'Matlab'</span>
+length(v4) <span class="comment">%&#20659;&#22238;&#34892;&#25976;&#33287;&#21015;&#25976;&#20854;&#19968;&#36611;&#22823;&#30340;&#25976;</span>
+length(v5)<span class="comment">%&#26597;&#35426;&#21521;&#37327;v5&#30340;&#20803;&#32032;&#20491;&#25976;</span>
+v5(5:length(v5))<span class="comment">%&#39023;&#31034;&#21521;&#37327;v5&#24478;5&#21040;length(v5)&#30340;&#20803;&#32032;</span>
+v8(length(v8)-3:length(v8))
+v20 = length(v8)
+v8 = (v20-3:v20)
+v1
+v1' <span class="comment">%&#36681;&#32622;:&#34892;&#35722;&#21015;&#65292;&#21015;&#35722;&#34892;</span>
+v3
+v3'<span class="comment">%&#36681;&#32622;:&#34892;&#35722;&#21015;&#65292;&#21015;&#35722;&#34892;</span>
+v1 + v3'
+v4
+v4'
+v9 = input(<span class="string">'Enter a number for a &gt; '</span>)
+v10 = input(<span class="string">'Enter numbers for v10&gt; '</span>)
+v11 = input(<span class="string">'Enter one word for v11&gt; '</span>)
+v12 = input(<span class="string">'Enter words for v12&gt; '</span>)
+v12(4:8)
+v13 = input(<span class="string">'Enter words for v13&gt; '</span>)
+v13{2} <span class="comment">%&#21462;&#20986;&#31532;2&#20491;&#20803;&#32032;</span>
+</pre><pre class="codeoutput">
+v1 =
+
+     1     2     3
+
+
+v2 =
+
+     2     4     6     8
+
+
+v3 =
+
+    11
+    12
+    13
+
+
+v4 =
+
+     1     2     3
+    11    12    13
+
+
+v5 =
+
+     1     2     3     4     5     6     7     8     9    10
+
+
+v6 =
+
+     1     3     5     7     9
+
+
+v7 =
+
+    10     9     8     7     6     5     4     3     2     1
+
+
+v8 =
+
+    'Matlab'
+
+
+ans =
+
+     3
+
+
+ans =
+
+    10
+
+
+ans =
+
+     5     6     7     8     9    10
+
+
+ans =
+
+    'tlab'
+
+
+v20 =
+
+     6
+
+
+v8 =
+
+     3     4     5     6
+
+
+v1 =
+
+     1     2     3
+
+
+ans =
+
+     1
+     2
+     3
+
+
+v3 =
+
+    11
+    12
+    13
+
+
+ans =
+
+    11    12    13
+
+
+ans =
+
+    12    14    16
+
+
+v4 =
+
+     1     2     3
+    11    12    13
+
+
+ans =
+
+     1    11
+     2    12
+     3    13
+
+</pre><pre class="codeoutput error">Error using input
+Cannot call INPUT from EVALC.
+
+Error in m21 (line 22)
+v9 = input('Enter a number for a &gt; ')
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+v1 = [1 2 3]
+v2 = [2 4 6 8]
+v3 = [11;12;13]
+v4 = [1 2 3;11 12 13]
+v5 = [1:10]
+v6 = [1:2:10]
+v7 = [10:-1:1]
+v8 = 'Matlab'
+length(v4) %傳回行數與列數其一較大的數
+length(v5)%查詢向量v5的元素個數
+v5(5:length(v5))%顯示向量v5從5到length(v5)的元素
+v8(length(v8)-3:length(v8))
+v20 = length(v8)
+v8 = (v20-3:v20)
+v1
+v1' %轉置:行變列，列變行
+v3
+v3'%轉置:行變列，列變行
+v1 + v3'
+v4
+v4'
+v9 = input('Enter a number for a > ')
+v10 = input('Enter numbers for v10> ')
+v11 = input('Enter one word for v11> ')
+v12 = input('Enter words for v12> ')
+v12(4:8)
+v13 = input('Enter words for v13> ')
+v13{2} %取出第2個元素
+##### SOURCE END #####
+--></body></html>

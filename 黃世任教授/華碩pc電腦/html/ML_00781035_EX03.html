@@ -1,0 +1,293 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>ML_00781035_EX03</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-03-21"><meta name="DC.source" content="ML_00781035_EX03.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="comment">%&#26366;&#37434;&#30355; 0071035 Matlab &#31777;&#20171;_&#20316;&#26989;3</span>
+clear;clc
+M = [1 2 3;21 22 23;31 32 33;41 42 43]
+<span class="comment">%&#20197; fprintf()&#20989;&#25976;&#39023;&#31034;&#20986;&#30697;&#38499; M &#35041;,&#31532; 1 &#21015;(row)&#31532; 3 &#34892;(column)&#30340;&#20803;&#32032;&#30340;&#20301;&#32622;&#21450;&#20540;&#12290;</span>
+a = M(1,3)
+ind_a=sub2ind(size(M),1,3) <span class="comment">%&#23559;&#22823;&#23567;&#28858;size(M)&#30340;&#30697;&#38499;&#30340;&#20108;&#32173;&#32034;&#24341;&#20540;(1,3)&#36681;&#25563;&#25104;&#19968;&#32173;&#32034;&#24341;&#20540;ind_a</span>
+fprintf(<span class="string">'ind_a=%d , value_a=%d \n'</span>,ind_a,a)
+<span class="comment">%&#21462;&#20986;&#30697;&#38499; M &#35041;,&#31532; 2 &#21015;(row)&#30340;&#31532; 2~3 &#34892;(column)&#30340;&#20803;&#32032;&#12290;</span>
+b = M(2,2:3)
+<span class="comment">%&#21462;&#20986;&#30697;&#38499; M &#35041;,&#31532; 3 &#34892;(column)&#30340;&#25152;&#26377;&#20803;&#32032;&#12290;</span>
+c = M(:,3)
+<span class="comment">%&#23559; M &#30697;&#38499;&#30340;&#20803;&#32032;,&#20998;&#21029;&#23384;&#25104;A&#21450;B</span>
+A = [M(1,:);M(4,:)]
+B = [M(2,:);M(3,:)]
+<span class="comment">%&#35430;&#23559;&#30697;&#38499; A &#21644; B &#20998;&#21029;&#23384;&#25104;&#19977;&#32173;&#30697;&#38499;&#30340;&#31532; 1 &#38913;(page)&#21644;&#31532; 2 &#38913;(page) ,&#20006;&#21478;&#23384;&#25104;&#19968;&#26032;&#38499;&#21015;&#12290;</span>
+e1(:,:,1) =  A
+e1(:,:,2) =  B
+<span class="comment">%&#35430;&#23559;&#30697;&#38499; M &#21033;&#29992; reshape()&#20989;&#25976;&#23559;&#32173;&#24230;&#25913;&#28858; 1(row) x 12(column)&#21521;&#37327;,&#20006;&#21478;&#23384;&#25104;&#19968;&#26032;&#38499;&#21015;&#12290;</span>
+f1 = reshape(M,1,12)
+<span class="comment">%&#35430;&#23559;&#30697;&#38499; M &#21033;&#29992; reshape()&#20989;&#25976;&#23559;&#32173;&#24230;&#25913;&#28858;3&#21015;(row)x 4&#34892;&#30697;&#38499;,&#20006;&#21478;&#23384;&#25104;&#19968;&#26032;&#38499;&#21015;&#12290;</span>
+g1 = reshape(M,3,4)
+<span class="comment">%&#35430;&#23559;&#30697;&#38499; M &#30340;&#27599;&#19968;&#21015;(row)&#30340;&#20803;&#32032;&#21453;&#21521;&#25490;&#21015;,&#20351;&#20854;&#25104;&#28858;M1</span>
+M1 = fliplr(flipud(M))
+<span class="comment">%&#23559;&#19968;&#32173;&#38499;&#21015;[4 24 34 44]&#21152;&#21040;&#38499;&#21015; M &#30340;&#31532; 4 &#34892;,&#20351;&#20854;&#25104;&#28858; 4x4 &#38499;&#21015;,&#20006;&#21478;&#23384;&#25104;&#19968;&#26032;&#38499;&#21015;&#12290;</span>
+i1=[M(1,:) 4;M(2,:) 24;M(3,:) 34;M(4,:) 44]
+<span class="comment">%&#23559;&#19978;&#36848; 4x4 &#38499;&#21015;&#30340;&#23565;&#35282;&#32218;&#20803;&#32032;&#21462;&#20986;,&#20877;&#20197;&#27492;&#23565;&#35282;&#32218;&#20803;&#32032;&#28858;&#23565;&#35282;&#20803;&#32032;,&#24314;&#31435;&#19968;&#26032;&#30697;&#38499;&#12290;</span>
+j1=diag(i1)
+j2 = [j1(1,1) 0 0 0;0 j1(2,1) 0 0;0 0 j1(3,1) 0;0 0 0 j1(4,1)] <span class="comment">%&#26041;&#27861;&#19968;</span>
+j3 = diag(diag(i1)) <span class="comment">%&#26041;&#27861;&#20108;</span>
+<span class="comment">%&#35430;&#20197; magic()&#20989;&#25976;&#24314;&#31435;&#19968;&#20491; 5x5 &#30340;&#26041;&#38499;,&#20006;&#23559;&#23427;&#35373;&#23450;&#32102;&#30697;&#38499; AK,</span>
+<span class="comment">%&#20877;&#20197; Matlab &#35486;&#27861;&#39511;&#35657;&#30697;&#38499; AK&#30340;&#27599;&#19968;&#30452;&#34892;(column)&#12289;&#27599;&#19968;&#27243;&#21015;(row)&#12289;&#21450;&#23565;&#35282;&#32218;&#30340;&#32317;&#21644;&#22343;&#28858; 65&#12290;</span>
+AK = magic(5)
+k1 = sum(AK) <span class="comment">%&#27599;&#19968;&#30452;&#34892;&#32317;&#21644;</span>
+K2 = [sum(AK(1,:)) sum(AK(2,:)) sum(AK(3,:)) sum(AK(4,:)) sum(AK(5,:))] <span class="comment">%&#27599;&#19968;&#27243;&#21015;&#32317;&#21644;</span>
+
+AK_ROT=rot90(AK) <span class="comment">%&#23559;AK&#26059;&#36681;90&#24230;</span>
+K3 = [sum(diag(AK)) sum(diag(AK_ROT))] <span class="comment">%&#20841;&#20491;&#20027;&#23565;&#35282;&#32218;&#30340;&#20491;&#21029;&#32317;&#21644;</span>
+</pre><pre class="codeoutput">
+M =
+
+     1     2     3
+    21    22    23
+    31    32    33
+    41    42    43
+
+
+a =
+
+     3
+
+
+ind_a =
+
+     9
+
+ind_a=9 , value_a=3 
+
+b =
+
+    22    23
+
+
+c =
+
+     3
+    23
+    33
+    43
+
+
+A =
+
+     1     2     3
+    41    42    43
+
+
+B =
+
+    21    22    23
+    31    32    33
+
+
+e1 =
+
+     1     2     3
+    41    42    43
+
+
+e1(:,:,1) =
+
+     1     2     3
+    41    42    43
+
+
+e1(:,:,2) =
+
+    21    22    23
+    31    32    33
+
+
+f1 =
+
+     1    21    31    41     2    22    32    42     3    23    33    43
+
+
+g1 =
+
+     1    41    32    23
+    21     2    42    33
+    31    22     3    43
+
+
+M1 =
+
+    43    42    41
+    33    32    31
+    23    22    21
+     3     2     1
+
+
+i1 =
+
+     1     2     3     4
+    21    22    23    24
+    31    32    33    34
+    41    42    43    44
+
+
+j1 =
+
+     1
+    22
+    33
+    44
+
+
+j2 =
+
+     1     0     0     0
+     0    22     0     0
+     0     0    33     0
+     0     0     0    44
+
+
+j3 =
+
+     1     0     0     0
+     0    22     0     0
+     0     0    33     0
+     0     0     0    44
+
+
+AK =
+
+    17    24     1     8    15
+    23     5     7    14    16
+     4     6    13    20    22
+    10    12    19    21     3
+    11    18    25     2     9
+
+
+k1 =
+
+    65    65    65    65    65
+
+
+K2 =
+
+    65    65    65    65    65
+
+
+AK_ROT =
+
+    15    16    22     3     9
+     8    14    20    21     2
+     1     7    13    19    25
+    24     5     6    12    18
+    17    23     4    10    11
+
+
+K3 =
+
+    65    65
+
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%曾鈺皓 0071035 Matlab 簡介_作業3
+clear;clc
+M = [1 2 3;21 22 23;31 32 33;41 42 43]
+%以 fprintf()函數顯示出矩陣 M 裡,第 1 列(row)第 3 行(column)的元素的位置及值。
+a = M(1,3)
+ind_a=sub2ind(size(M),1,3) %將大小為size(M)的矩陣的二維索引值(1,3)轉換成一維索引值ind_a
+fprintf('ind_a=%d , value_a=%d \n',ind_a,a)
+%取出矩陣 M 裡,第 2 列(row)的第 2~3 行(column)的元素。
+b = M(2,2:3)
+%取出矩陣 M 裡,第 3 行(column)的所有元素。
+c = M(:,3)
+%將 M 矩陣的元素,分別存成A及B
+A = [M(1,:);M(4,:)]
+B = [M(2,:);M(3,:)]
+%試將矩陣 A 和 B 分別存成三維矩陣的第 1 頁(page)和第 2 頁(page) ,並另存成一新陣列。
+e1(:,:,1) =  A
+e1(:,:,2) =  B
+%試將矩陣 M 利用 reshape()函數將維度改為 1(row) x 12(column)向量,並另存成一新陣列。
+f1 = reshape(M,1,12)
+%試將矩陣 M 利用 reshape()函數將維度改為3列(row)x 4行矩陣,並另存成一新陣列。
+g1 = reshape(M,3,4)
+%試將矩陣 M 的每一列(row)的元素反向排列,使其成為M1
+M1 = fliplr(flipud(M))
+%將一維陣列[4 24 34 44]加到陣列 M 的第 4 行,使其成為 4x4 陣列,並另存成一新陣列。
+i1=[M(1,:) 4;M(2,:) 24;M(3,:) 34;M(4,:) 44]
+%將上述 4x4 陣列的對角線元素取出,再以此對角線元素為對角元素,建立一新矩陣。
+j1=diag(i1)
+j2 = [j1(1,1) 0 0 0;0 j1(2,1) 0 0;0 0 j1(3,1) 0;0 0 0 j1(4,1)] %方法一
+j3 = diag(diag(i1)) %方法二
+%試以 magic()函數建立一個 5x5 的方陣,並將它設定給矩陣 AK,
+%再以 Matlab 語法驗證矩陣 AK的每一直行(column)、每一橫列(row)、及對角線的總和均為 65。
+AK = magic(5)
+k1 = sum(AK) %每一直行總和
+K2 = [sum(AK(1,:)) sum(AK(2,:)) sum(AK(3,:)) sum(AK(4,:)) sum(AK(5,:))] %每一橫列總和
+
+AK_ROT=rot90(AK) %將AK旋轉90度
+K3 = [sum(diag(AK)) sum(diag(AK_ROT))] %兩個主對角線的個別總和
+##### SOURCE END #####
+--></body></html>

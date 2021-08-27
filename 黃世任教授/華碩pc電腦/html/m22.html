@@ -1,0 +1,244 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>m22</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-03-09"><meta name="DC.source" content="m22.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput">clear
+a = linspace(1,10) <span class="comment">%&#24478;1&#21040;10&#65292;&#24314;&#31435;&#19968;&#20491;&#20855;&#26377;100&#20491;&#20803;&#32032;&#30340;&#21015;&#21521;&#37327;</span>
+a1 = linspace(1,10,5) <span class="comment">%&#24478;1&#21040;10&#65292;&#24314;&#31435;&#19968;&#20491;&#20855;&#26377;5&#20491;&#20803;&#32032;&#30340;&#21015;&#21521;&#37327;</span>
+b1 = linspace(0,2*pi,60)<span class="comment">%&#24478;0&#21040;2*pi&#65292;&#24314;&#31435;&#19968;&#20491;&#20855;&#26377;60&#20491;&#20803;&#32032;&#30340;&#21015;&#21521;&#37327;</span>
+c1 = sin(b1)
+length(b1) <span class="comment">%&#26597;&#35426;&#21521;&#37327;b1&#30340;&#20803;&#32032;&#20491;&#25976;</span>
+length(a) <span class="comment">%&#26597;&#35426;&#21521;&#37327;a&#30340;&#20803;&#32032;&#20491;&#25976;</span>
+</pre><pre class="codeoutput">
+a =
+
+  Columns 1 through 7
+
+    1.0000    1.0909    1.1818    1.2727    1.3636    1.4545    1.5455
+
+  Columns 8 through 14
+
+    1.6364    1.7273    1.8182    1.9091    2.0000    2.0909    2.1818
+
+  Columns 15 through 21
+
+    2.2727    2.3636    2.4545    2.5455    2.6364    2.7273    2.8182
+
+  Columns 22 through 28
+
+    2.9091    3.0000    3.0909    3.1818    3.2727    3.3636    3.4545
+
+  Columns 29 through 35
+
+    3.5455    3.6364    3.7273    3.8182    3.9091    4.0000    4.0909
+
+  Columns 36 through 42
+
+    4.1818    4.2727    4.3636    4.4545    4.5455    4.6364    4.7273
+
+  Columns 43 through 49
+
+    4.8182    4.9091    5.0000    5.0909    5.1818    5.2727    5.3636
+
+  Columns 50 through 56
+
+    5.4545    5.5455    5.6364    5.7273    5.8182    5.9091    6.0000
+
+  Columns 57 through 63
+
+    6.0909    6.1818    6.2727    6.3636    6.4545    6.5455    6.6364
+
+  Columns 64 through 70
+
+    6.7273    6.8182    6.9091    7.0000    7.0909    7.1818    7.2727
+
+  Columns 71 through 77
+
+    7.3636    7.4545    7.5455    7.6364    7.7273    7.8182    7.9091
+
+  Columns 78 through 84
+
+    8.0000    8.0909    8.1818    8.2727    8.3636    8.4545    8.5455
+
+  Columns 85 through 91
+
+    8.6364    8.7273    8.8182    8.9091    9.0000    9.0909    9.1818
+
+  Columns 92 through 98
+
+    9.2727    9.3636    9.4545    9.5455    9.6364    9.7273    9.8182
+
+  Columns 99 through 100
+
+    9.9091   10.0000
+
+
+a1 =
+
+    1.0000    3.2500    5.5000    7.7500   10.0000
+
+
+b1 =
+
+  Columns 1 through 7
+
+         0    0.1065    0.2130    0.3195    0.4260    0.5325    0.6390
+
+  Columns 8 through 14
+
+    0.7455    0.8520    0.9585    1.0649    1.1714    1.2779    1.3844
+
+  Columns 15 through 21
+
+    1.4909    1.5974    1.7039    1.8104    1.9169    2.0234    2.1299
+
+  Columns 22 through 28
+
+    2.2364    2.3429    2.4494    2.5559    2.6624    2.7689    2.8754
+
+  Columns 29 through 35
+
+    2.9819    3.0883    3.1948    3.3013    3.4078    3.5143    3.6208
+
+  Columns 36 through 42
+
+    3.7273    3.8338    3.9403    4.0468    4.1533    4.2598    4.3663
+
+  Columns 43 through 49
+
+    4.4728    4.5793    4.6858    4.7923    4.8988    5.0052    5.1117
+
+  Columns 50 through 56
+
+    5.2182    5.3247    5.4312    5.5377    5.6442    5.7507    5.8572
+
+  Columns 57 through 60
+
+    5.9637    6.0702    6.1767    6.2832
+
+
+c1 =
+
+  Columns 1 through 7
+
+         0    0.1063    0.2114    0.3141    0.4132    0.5077    0.5964
+
+  Columns 8 through 14
+
+    0.6783    0.7526    0.8183    0.8748    0.9213    0.9574    0.9827
+
+  Columns 15 through 21
+
+    0.9968    0.9996    0.9912    0.9714    0.9407    0.8993    0.8477
+
+  Columns 22 through 28
+
+    0.7866    0.7165    0.6382    0.5528    0.4611    0.3642    0.2631
+
+  Columns 29 through 35
+
+    0.1591    0.0532   -0.0532   -0.1591   -0.2631   -0.3642   -0.4611
+
+  Columns 36 through 42
+
+   -0.5528   -0.6382   -0.7165   -0.7866   -0.8477   -0.8993   -0.9407
+
+  Columns 43 through 49
+
+   -0.9714   -0.9912   -0.9996   -0.9968   -0.9827   -0.9574   -0.9213
+
+  Columns 50 through 56
+
+   -0.8748   -0.8183   -0.7526   -0.6783   -0.5964   -0.5077   -0.4132
+
+  Columns 57 through 60
+
+   -0.3141   -0.2114   -0.1063   -0.0000
+
+
+ans =
+
+    60
+
+
+ans =
+
+   100
+
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+clear
+a = linspace(1,10) %從1到10，建立一個具有100個元素的列向量
+a1 = linspace(1,10,5) %從1到10，建立一個具有5個元素的列向量
+b1 = linspace(0,2*pi,60)%從0到2*pi，建立一個具有60個元素的列向量
+c1 = sin(b1)
+length(b1) %查詢向量b1的元素個數
+length(a) %查詢向量a的元素個數
+
+
+##### SOURCE END #####
+--></body></html>

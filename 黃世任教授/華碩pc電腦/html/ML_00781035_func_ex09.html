@@ -1,0 +1,117 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>ML_00781035_func_ex09</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-05-31"><meta name="DC.source" content="ML_00781035_func_ex09.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="comment">%&#26366;&#37434;&#30355;_0071035_Matlab&#31777;&#20171;_&#20316;&#26989;9</span>
+<span class="keyword">function</span> [n,tp]=ML_00781035_func_ex09(p,sp)
+<span class="comment">%&#36664;&#20837;&#24341;&#25976;p:&#27599;&#19968;&#26522;&#28023;&#23565;&#31354;&#39131;&#24392;&#27599;&#27425;&#25915;&#25802;&#30340;&#25104;&#21151;&#27231;&#29575;</span>
+<span class="comment">%&#36664;&#20837;&#24341;&#25976;sp:&#35373;&#23450;&#19981;&#34987;&#25802;&#20013;&#30340;&#27231;&#29575;</span>
+<span class="comment">%&#36664;&#20986;&#24341;&#25976;n:&#38656;&#35201;&#30340;&#39131;&#24392;&#25976;&#37327;(&#24517;&#38920;&#30332;&#23556;&#22810;&#23569;&#26522;&#28023;&#23565;&#31354;&#39131;&#24392;&#20197;&#25703;&#27584;&#20358;&#35186;&#30340;&#39131;&#24392;)</span>
+<span class="comment">%&#36664;&#20986;&#24341;&#25976;tp:&#32317;&#19981;&#34987;&#25802;&#20013;&#30340;&#27231;&#29575;(&#32317;&#21629;&#20013;&#27231;&#29575;)</span>
+<span class="comment">%ML_00781035_main_ex08&#36664;&#20986;&#24341;&#25976;&#28858;&#28023;&#23565;&#31354;&#39131;&#24392;&#25104;&#21151;&#25703;&#27584;&#20358;&#35186;&#39131;&#24392;&#30340;&#27231;&#29575;</span>
+<span class="comment">%&#27492;&#20107;&#20214;&#27491;&#22909;&#26377; j &#27425;&#25104;&#21151;&#25802;&#20013;&#30340;&#27231;&#29575;(j&#23565;&#25033;&#21040;ML_00781035_func_ex08&#30340;k)</span>
+<span class="comment">% i:&#30332;&#23556;&#39131;&#24392;&#30340;&#27425;&#25976;(i&#23565;&#25033;&#21040;ML_00781035_func_ex08&#30340;n)</span>
+<span class="keyword">for</span> i=1:20                   <span class="comment">%&#30332;&#23556;&#39131;&#24392;&#30340;&#27425;&#25976;&#65292;&#32102;&#23450;&#30332;&#23556;&#31684;&#22285;&#26159; 1 &#21040; 20 &#38982;&#39131;&#24392;</span>
+    tp=0;                    <span class="comment">%&#32317;&#19981;&#34987;&#25802;&#20013;&#30340;&#27231;&#29575;(&#32317;&#21629;&#20013;&#27231;&#29575;)&#21021;&#22987;&#20540;&#35373;&#28858; 0</span>
+    <span class="keyword">for</span> j=1:i                <span class="comment">% i &#27425;&#30340;&#30332;&#23556;&#20013;&#65292;&#27491;&#22909;&#26377; j &#27425;&#25104;&#21151;&#25802;&#20013;&#30340;&#27231;&#29575;</span>
+        pk=ML_00781035_func_ex08(p,j,i);
+        tp=tp+pk;            <span class="comment">%&#27599;&#19968;&#36650;&#36852;&#22280;&#23559;&#20491;&#21029;&#30340;&#27231;&#29575;pk&#21152;&#21040;&#32317;&#21629;&#20013;&#27231;&#29575;tp</span>
+    <span class="keyword">end</span>                      <span class="comment">%end for j</span>
+        <span class="keyword">if</span> tp&gt;=sp            <span class="comment">%&#22914;&#26524;&#32317;&#21629;&#20013;&#27231;&#29575;&#22823;&#26044;&#35373;&#23450;&#19981;&#34987;&#25802;&#20013;&#30340;&#27231;&#29575;</span>
+            <span class="keyword">break</span>;           <span class="comment">%&#23601;&#36339;&#20986; j &#30340;for&#36852;&#22280;</span>
+        <span class="keyword">end</span>                  <span class="comment">%end if tp&gt;=sp</span>
+<span class="keyword">end</span>                          <span class="comment">%end for n and for i</span>
+n=i                          <span class="comment">%&#25351;&#23450;&#26368;&#24460;&#19968;&#20491;&#30332;&#23556;&#39131;&#24392;&#30340;&#27425;&#25976; i &#32102; n &#20006;&#19988;&#36664;&#20986;</span>
+</pre><pre class="codeoutput error">Not enough input arguments.
+
+Error in ML_00781035_func_ex09 (line 13)
+        pk=ML_00781035_func_ex08(p,j,i);
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%曾鈺皓_0071035_Matlab簡介_作業9
+function [n,tp]=ML_00781035_func_ex09(p,sp)
+%輸入引數p:每一枚海對空飛彈每次攻擊的成功機率
+%輸入引數sp:設定不被擊中的機率
+%輸出引數n:需要的飛彈數量(必須發射多少枚海對空飛彈以摧毀來襲的飛彈)
+%輸出引數tp:總不被擊中的機率(總命中機率)
+%ML_00781035_main_ex08輸出引數為海對空飛彈成功摧毀來襲飛彈的機率
+%此事件正好有 j 次成功擊中的機率(j對應到ML_00781035_func_ex08的k)
+% i:發射飛彈的次數(i對應到ML_00781035_func_ex08的n)
+for i=1:20                   %發射飛彈的次數，給定發射範圍是 1 到 20 顆飛彈
+    tp=0;                    %總不被擊中的機率(總命中機率)初始值設為 0
+    for j=1:i                % i 次的發射中，正好有 j 次成功擊中的機率
+        pk=ML_00781035_func_ex08(p,j,i);
+        tp=tp+pk;            %每一輪迴圈將個別的機率pk加到總命中機率tp
+    end                      %end for j 
+        if tp>=sp            %如果總命中機率大於設定不被擊中的機率
+            break;           %就跳出 j 的for迴圈
+        end                  %end if tp>=sp
+end                          %end for n and for i
+n=i                          %指定最後一個發射飛彈的次數 i 給 n 並且輸出
+
+##### SOURCE END #####
+--></body></html>

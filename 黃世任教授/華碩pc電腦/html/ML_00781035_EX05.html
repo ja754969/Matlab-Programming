@@ -1,0 +1,257 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>ML_00781035_EX05</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-04-10"><meta name="DC.source" content="ML_00781035_EX05.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="comment">%&#26366;&#37434;&#30355;_0071035_Matlab&#31777;&#20171;_&#20316;&#26989;5</span>
+clear;clc;clf;
+<span class="comment">%(A)&#20197; randi &#20989;&#25976;&#29986;&#29983; 100 &#20491;&#38632;&#28404;&#31890;&#21322;&#24465;(r),&#20854;&#20540;&#22312; 1~100(&#24494;&#31859;)&#21312;&#38291;,</span>
+<span class="comment">%&#20006;&#20197; fprintf()&#25351;&#20196;&#20998;&#21029;&#39023;&#31034;&#38632;&#28404;&#31890;&#21322;&#24465;&#12289;&#38632;&#28404;&#32066;&#31471;&#36895;&#24230;&#12289;&#21450;&#38632;&#28404;&#39636;&#31309;&#30340;&#26368;&#23567;&#20540;&#21644;&#26368;&#22823;&#20540;</span>
+a=randi([1,100],[1,100]); <span class="comment">%1&#21040;100&#12300;&#24494;&#31859;&#12301;</span>
+vt1=(9.8*(a*10^-6).^2*(997-1.204))/18/(1.81*10^-5); <span class="comment">%&#32066;&#31471;&#36895;&#24230;</span>
+v=4*pi*((a*10^-6).^3)/3;  <span class="comment">%&#39636;&#31309;</span>
+fprintf(<span class="string">'&#38632;&#28404;&#21322;&#24465;&#26368;&#23567;&#20540;:%g \n&#38632;&#28404;&#21322;&#24465;&#26368;&#22823;&#20540;:%g \n'</span>,min(a),max(a))
+fprintf(<span class="string">'&#38632;&#28404;&#32066;&#31471;&#36895;&#24230;&#26368;&#23567;&#20540;:%g \n&#38632;&#28404;&#32066;&#31471;&#36895;&#24230;&#26368;&#22823;&#20540;:%g \n'</span>,min(vt1),max(vt1))
+fprintf(<span class="string">'&#38632;&#28404;&#39636;&#31309;&#26368;&#23567;&#20540;:%g \n&#38632;&#28404;&#39636;&#31309;&#26368;&#22823;&#20540;:%g \n'</span>,min(v),max(v))
+<span class="comment">%(B)&#20877;&#23559;&#27492;&#38632;&#28404;&#31890;&#21322;&#24465;&#20381;&#24207;&#30001;&#23567;&#21040;&#22823;&#25490;&#21015;</span>
+b=sort(a)
+<span class="comment">%(C)&#28982;&#24460;&#20877;&#35336;&#31639;&#21508;&#31890;&#24465;&#30340;&#38632;&#28404;&#30340;&#32066;&#31471;&#36895;&#24230;(VT)</span>
+vt2=(9.8*(b*10^-6).^2*(997-1.204))/18/(1.81*10^-5);
+
+<span class="comment">%(D)&#28982;&#24460;&#20197; plot &#25351;&#20196;,&#32362;&#20986;&#27700;&#24179;&#36600;&#28858;&#38632;&#28404;&#21322;&#24465;</span>
+<span class="comment">%&#22402;&#30452;&#36600;&#28858;&#38632;&#28404;&#32066;&#31471;&#36895;&#24230;&#30340;&#38632;&#28404;&#21322;&#24465;&#33287;&#32066;&#31471;&#36895;&#24230;&#22294;(f1)</span>
+subplot(2,1,1)
+plot(b,vt2)
+title(<span class="string">'00781035-f1'</span>)
+xlabel(<span class="string">'&#38632;&#28404;&#21322;&#24465;(m)'</span>)
+ylabel(<span class="string">'&#38632;&#28404;&#32066;&#31471;&#36895;&#24230;(m/s)'</span>)
+<span class="comment">%(E)&#20551;&#35373;&#38632;&#28404;&#28858;&#29699;&#39636;,&#20197;&#38632;&#28404;&#21322;&#24465;&#35336;&#31639;&#23565;&#25033;&#39636;&#31309;&#24460;</span>
+<span class="comment">%&#20197; plot &#25351;&#20196;,&#32362;&#20986;&#27700;&#24179;&#36600;&#28858;&#38632;&#28404;&#21322;&#24465;,&#22402;&#30452;&#36600;&#28858;&#38632;&#28404;&#39636;&#31309;&#30340;&#38632;&#28404;&#39636;&#31309;&#33287;&#38632;&#28404;&#21322;&#24465;&#22294;(f2)</span>
+<span class="comment">%&#20006;&#22312;&#25490;&#24207;&#24460;&#30340;&#31532; 80 &#20491;&#38632;&#28404;&#21322;&#24465;&#21450;&#39636;&#31309;&#20301;&#32622;,&#20197; text()&#20989;&#25976;&#21152;&#20837;&#32005;&#33394;&#8221;+&#8221;&#25991;&#23383;&#12290;</span>
+v2=4*pi*((b*10^-6).^3)/3  <span class="comment">%&#39636;&#31309;</span>
+subplot(2,1,2)
+plot(b,v2)
+title(<span class="string">'00781035-f2'</span>)
+xlabel(<span class="string">'&#38632;&#28404;&#21322;&#24465;(m)'</span>)
+ylabel(<span class="string">'&#38632;&#28404;&#39636;&#31309;(m^3)'</span>)
+v80=v2(80)  <span class="comment">%&#25490;&#24207;&#24460;&#30340;&#31532; 80 &#20491;&#38632;&#28404;&#39636;&#31309;</span>
+text(b(80),v80,<span class="string">'+'</span>,<span class="string">'color'</span>,<span class="string">'r'</span>)
+<span class="comment">%(F) &#20197;&#19978;&#22294;&#24418;&#27161;&#38988;&#35531;&#29992;&#24744;&#30340;&#8221;&#23416;&#34399;&#8221;,&#20877;&#21152;&#20837;&#36969;&#30070;&#30340; x &#36600;&#30340;&#25991;&#23383;&#35498;&#26126;</span>
+<span class="comment">%&#21644; y &#36600;&#30340;&#25991;&#23383;&#35498;&#26126;,&#26368;&#24460;&#23559;&#22294;&#23384;&#28858; jpg &#26684;&#24335;&#27284;&#26696;&#12290;</span>
+<span class="comment">%&#20006;&#23559;&#23427;&#20497;&#25490;&#25104; 2x1 &#30340;&#22294;&#24418;&#38499;&#21015;,&#20854;&#25490;&#21015;&#26684;&#24335;&#22914;:[f1;f2]</span>
+saveas(gcf,<span class="string">'00781035_ex05.jpg'</span>,<span class="string">'jpg'</span>)
+</pre><pre class="codeoutput">&#38632;&#28404;&#21322;&#24465;&#26368;&#23567;&#20540;:3 
+&#38632;&#28404;&#21322;&#24465;&#26368;&#22823;&#20540;:99 
+&#38632;&#28404;&#32066;&#31471;&#36895;&#24230;&#26368;&#23567;&#20540;:0.00026958 
+&#38632;&#28404;&#32066;&#31471;&#36895;&#24230;&#26368;&#22823;&#20540;:0.293573 
+&#38632;&#28404;&#39636;&#31309;&#26368;&#23567;&#20540;:1.13097e-16 
+&#38632;&#28404;&#39636;&#31309;&#26368;&#22823;&#20540;:4.06438e-12 
+
+b =
+
+  Columns 1 through 13
+
+     3     3     4     4     9    10    11    12    12    14    17    18    19
+
+  Columns 14 through 26
+
+    19    20    20    21    23    23    23    24    24    24    24    26    27
+
+  Columns 27 through 39
+
+    27    27    30    31    32    32    34    34    36    37    38    40    41
+
+  Columns 40 through 52
+
+    43    44    44    44    46    48    48    48    49    49    49    50    51
+
+  Columns 53 through 65
+
+    51    51    53    54    55    56    58    58    59    60    61    61    62
+
+  Columns 66 through 78
+
+    63    63    65    66    68    68    70    72    72    72    73    74    75
+
+  Columns 79 through 91
+
+    78    80    81    81    82    85    86    88    89    89    90    91    91
+
+  Columns 92 through 100
+
+    91    92    93    93    94    97    98    98    99
+
+
+v2 =
+
+   1.0e-11 *
+
+  Columns 1 through 7
+
+    0.0000    0.0000    0.0000    0.0000    0.0003    0.0004    0.0006
+
+  Columns 8 through 14
+
+    0.0007    0.0007    0.0011    0.0021    0.0024    0.0029    0.0029
+
+  Columns 15 through 21
+
+    0.0034    0.0034    0.0039    0.0051    0.0051    0.0051    0.0058
+
+  Columns 22 through 28
+
+    0.0058    0.0058    0.0058    0.0074    0.0082    0.0082    0.0082
+
+  Columns 29 through 35
+
+    0.0113    0.0125    0.0137    0.0137    0.0165    0.0165    0.0195
+
+  Columns 36 through 42
+
+    0.0212    0.0230    0.0268    0.0289    0.0333    0.0357    0.0357
+
+  Columns 43 through 49
+
+    0.0357    0.0408    0.0463    0.0463    0.0463    0.0493    0.0493
+
+  Columns 50 through 56
+
+    0.0493    0.0524    0.0556    0.0556    0.0556    0.0624    0.0660
+
+  Columns 57 through 63
+
+    0.0697    0.0736    0.0817    0.0817    0.0860    0.0905    0.0951
+
+  Columns 64 through 70
+
+    0.0951    0.0998    0.1047    0.1047    0.1150    0.1204    0.1317
+
+  Columns 71 through 77
+
+    0.1317    0.1437    0.1563    0.1563    0.1563    0.1630    0.1697
+
+  Columns 78 through 84
+
+    0.1767    0.1988    0.2145    0.2226    0.2226    0.2310    0.2572
+
+  Columns 85 through 91
+
+    0.2664    0.2855    0.2953    0.2953    0.3054    0.3157    0.3157
+
+  Columns 92 through 98
+
+    0.3157    0.3262    0.3369    0.3369    0.3479    0.3823    0.3942
+
+  Columns 99 through 100
+
+    0.3942    0.4064
+
+
+v80 =
+
+   2.1447e-12
+
+</pre><img vspace="5" hspace="5" src="ML_00781035_EX05_01.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%曾鈺皓_0071035_Matlab簡介_作業5
+clear;clc;clf;
+%(A)以 randi 函數產生 100 個雨滴粒半徑(r),其值在 1~100(微米)區間,
+%並以 fprintf()指令分別顯示雨滴粒半徑、雨滴終端速度、及雨滴體積的最小值和最大值
+a=randi([1,100],[1,100]); %1到100「微米」
+vt1=(9.8*(a*10^-6).^2*(997-1.204))/18/(1.81*10^-5); %終端速度
+v=4*pi*((a*10^-6).^3)/3;  %體積
+fprintf('雨滴半徑最小值:%g \n雨滴半徑最大值:%g \n',min(a),max(a))
+fprintf('雨滴終端速度最小值:%g \n雨滴終端速度最大值:%g \n',min(vt1),max(vt1))
+fprintf('雨滴體積最小值:%g \n雨滴體積最大值:%g \n',min(v),max(v))
+%(B)再將此雨滴粒半徑依序由小到大排列
+b=sort(a)
+%(C)然後再計算各粒徑的雨滴的終端速度(VT)
+vt2=(9.8*(b*10^-6).^2*(997-1.204))/18/(1.81*10^-5);
+
+%(D)然後以 plot 指令,繪出水平軸為雨滴半徑
+%垂直軸為雨滴終端速度的雨滴半徑與終端速度圖(f1)
+subplot(2,1,1)
+plot(b,vt2)
+title('00781035-f1')
+xlabel('雨滴半徑(m)')
+ylabel('雨滴終端速度(m/s)')
+%(E)假設雨滴為球體,以雨滴半徑計算對應體積後
+%以 plot 指令,繪出水平軸為雨滴半徑,垂直軸為雨滴體積的雨滴體積與雨滴半徑圖(f2)
+%並在排序後的第 80 個雨滴半徑及體積位置,以 text()函數加入紅色”+”文字。
+v2=4*pi*((b*10^-6).^3)/3  %體積
+subplot(2,1,2)
+plot(b,v2)
+title('00781035-f2')
+xlabel('雨滴半徑(m)')
+ylabel('雨滴體積(m^3)')
+v80=v2(80)  %排序後的第 80 個雨滴體積
+text(b(80),v80,'+','color','r')
+%(F) 以上圖形標題請用您的”學號”,再加入適當的 x 軸的文字說明
+%和 y 軸的文字說明,最後將圖存為 jpg 格式檔案。
+%並將它們排成 2x1 的圖形陣列,其排列格式如:[f1;f2]
+saveas(gcf,'00781035_ex05.jpg','jpg')
+##### SOURCE END #####
+--></body></html>
