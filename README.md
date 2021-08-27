@@ -1,28 +1,30 @@
+[![hackmd-github-sync-badge](https://hackmd.io/dUSh-_s4T9S-zaK4_rh-ag/badge)](https://hackmd.io/dUSh-_s4T9S-zaK4_rh-ag)  
+
 {%hackmd SybccZ6XD %}
-###### tags: `NTOU_1072` `程式語言` `Matlab` `繪圖`
+###### tags: `NTOU_1072` `程式語言` `Matlab` `繪圖`  
 # **[Matlab 上篇](https://drive.google.com/drive/u/2/folders/1MJySd-qIPTH3cFXPvPGiFUU8es70MGZm)** 
 
-## [相關連結](https://www.google.com.tw/search?q=matlab&rlz=1C1GCEU_zh-TWTW853&oq=matlab&aqs=chrome..69i57.2437j0j1&sourceid=chrome&ie=UTF-8)
-[最專業的MATLAB技術支援及服務團隊／鈦思科技](https://www.terasoft.com.tw/index.asp)
-[鈦思科技 校園專區](https://www.terasoft.com.tw/academia/)
-==[MATLAB & Simulink教育專區](https://www.terasoft.com.tw/academia/MATLAB_tutorials.asp)==
+## [相關連結](https://www.google.com.tw/search?q=matlab&rlz=1C1GCEU_zh-TWTW853&oq=matlab&aqs=chrome..69i57.2437j0j1&sourceid=chrome&ie=UTF-8)  
+[最專業的MATLAB技術支援及服務團隊／鈦思科技](https://www.terasoft.com.tw/index.asp)  
+[鈦思科技 校園專區](https://www.terasoft.com.tw/academia/)  
+==[MATLAB & Simulink教育專區](https://www.terasoft.com.tw/academia/MATLAB_tutorials.asp)==  
    
 
 ## [Roger Jang (張智星)](http://mirlab.org/jang/matlab/)
-   [線上教材(入門篇)](http://mirlab.org/jang/books/matlabProgramming4beginner/)
-   [線上教材(進階篇)](http://mirlab.org/jang/books/matlabProgramming4guru/)
-   [影片(入門篇)](https://www.camdemy.com/media/3308?autoplay=1)
-   [投影片](https://drive.google.com/drive/u/0/folders/1w8Awz3lWxYmunhWmtJ8UrMhi_XCCkWcC)
+   [線上教材(入門篇)](http://mirlab.org/jang/books/matlabProgramming4beginner/)  
+   [線上教材(進階篇)](http://mirlab.org/jang/books/matlabProgramming4guru/)  
+   [影片(入門篇)](https://www.camdemy.com/media/3308?autoplay=1)  
+   [投影片](https://drive.google.com/drive/u/0/folders/1w8Awz3lWxYmunhWmtJ8UrMhi_XCCkWcC)    
 
 ## [Matlab簡介_1072(黃世任教授)](https://drive.google.com/drive/u/0/folders/1MJySd-qIPTH3cFXPvPGiFUU8es70MGZm)
-[Tronclass](https://tronclass.ntou.edu.tw/course/48598/homework)
-[Matlab_Ch04_add](https:// "title")
-[Matlab_Ch05(2)]()
-[Matlab_Ch06(2)](https:// "title")
-[Matlab_Ch07_add](https:// "title")
-[Matlab_Ch08(2)](https://drive.google.com/open?id=1c5fKagoDTuz19klWs4ciuDYNikRez-TK)
-[Matlab_Ch09_add1](https://drive.google.com/open?id=1ZvYQ0tjREhwTVTxu4tMuKHymjBGmFtNp)
-[第17章](https://drive.google.com/open?id=1-WKW_ZFyhs_LRQdPqV_8S_rV18_eQIvo)
+[Tronclass](https://tronclass.ntou.edu.tw/course/48598/homework)  
+[Matlab_Ch04_add](https:// "title")  
+[Matlab_Ch05(2)]()  
+[Matlab_Ch06(2)](https:// "title")  
+[Matlab_Ch07_add](https:// "title")  
+[Matlab_Ch08(2)](https://drive.google.com/open?id=1c5fKagoDTuz19klWs4ciuDYNikRez-TK)  
+[Matlab_Ch09_add1](https://drive.google.com/open?id=1ZvYQ0tjREhwTVTxu4tMuKHymjBGmFtNp)  
+[第17章](https://drive.google.com/open?id=1-WKW_ZFyhs_LRQdPqV_8S_rV18_eQIvo)  
 ## m11 Matlab基本運算
 ``` Matlab
 cd
